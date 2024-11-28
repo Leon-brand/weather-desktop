@@ -13,8 +13,7 @@ export function Navbar() {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    const infoDay = weekDays.filter((day) => date.getDay() === weekDays.indexOf(day))[0];
-    
+    const infoDay = weekDays.filter((day) => date.getDay() === weekDays.indexOf(day))[0];    
 
     setDate(`${day}/${month}/${year}`);
     setDayName(infoDay);
@@ -22,7 +21,7 @@ export function Navbar() {
 
   return (
     <div>
-      <label className='text-3xl font-bold text-slate-900 '>{dayName}</label><br></br>
+      <label className='text-3xl font-bold text-slate-700 '>{dayName}</label><br></br>
       <label className='text-lg text-gray-500'>{date}</label>
       <hr className="h-px my-8 dark:bg-gray-100"/>
     </div>

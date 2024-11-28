@@ -5,8 +5,9 @@ import Sidebar from './components/Sidebar';
 
 function App() {
 
-  const [ dailyData, setDailyData ] = useState(null)
-  const [ currentInfo, setCurrentInfo ] = useState(null)
+  const [dailyData, setDailyData] = useState(null)
+  const [currentInfo, setCurrentInfo] = useState(null)
+  const [dailyForecast, setDailyForecast] = useState(null)
 
   useEffect(() => {
 
@@ -16,12 +17,13 @@ function App() {
         const data = await response.json()       
         setDailyData(data.daily.data[0])
         setCurrentInfo(data.current)
-        console.log(data)
+        setDailyForecast(data.daily.data)
+        console.log('data: ', data)
+        console.log('dailyForecast en App: ', dailyForecast)
       } catch (e) {
         console.error(e)
       }
     }
-
     weahterApiCall()
 
   }, [])
@@ -34,7 +36,7 @@ function App() {
           <Overview dailyData={dailyData}/>
         </div>      
         <div className="w-1/3 bg-gradient-to-b from-sky-800 to-blue-900 text-white p-6">
-          <Sidebar currentInfo={currentInfo}/>
+          {currentInfo & dailyForecast &&  <Sidebar currentInfo={currentInfo} dailyForecast={dailyForecast}/>}
         </div>
       </section>
     </>
