@@ -21,7 +21,10 @@ export function Navbar() {
 
   return (
     <div>
-      <label className='text-3xl font-bold text-slate-700 '>{dayName}</label><br></br>
+     <div className='flex justify-between text-3xl font-bold text-slate-700'>
+        <label className='text-3xl font-bold text-slate-700'>{dayName}</label>
+        <label>Mexico City</label>
+      </div><br></br>
       <label className='text-lg text-gray-500'>{date}</label>
       <hr className="h-px my-8 dark:bg-gray-100"/>
     </div>

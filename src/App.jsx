@@ -19,15 +19,26 @@ function App() {
         setCurrentInfo(data.current)
         setDailyForecast(data.daily.data)
         console.log('data: ', data)
-        console.log('dailyForecast en App: ', dailyForecast)
       } catch (e) {
         console.error(e)
       }
     }
+
+
+    const mapApiCall = async () => {
+      try {
+        const response = await fetch('https://tile.openweathermap.org/map/{layer}/9/19/99.png?appid=9a85654bf4e72c25aeed56a99cd7845b')
+        const dataMap = await response.json()
+        console.log('dataMap: ', dataMap)
+      } catch (e) {
+        console.error(e)
+      }
+    }  
+
     weahterApiCall()
+    mapApiCall()
 
   }, [])
-
 
   return (
     <>
@@ -36,7 +47,7 @@ function App() {
           <Overview dailyData={dailyData}/>
         </div>      
         <div className="w-1/3 bg-gradient-to-b from-sky-800 to-blue-900 text-white p-6">
-          {currentInfo & dailyForecast &&  <Sidebar currentInfo={currentInfo} dailyForecast={dailyForecast}/>}
+          <Sidebar currentInfo={currentInfo} dailyForecast={dailyForecast}/>
         </div>
       </section>
     </>

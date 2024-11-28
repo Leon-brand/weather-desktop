@@ -3,13 +3,12 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import Forecast from './Forecast';
 
-export function Sidebar( {currentInfo}, {dailyForecast} ) {
-
-    
-
+export function Sidebar( {currentInfo, dailyForecast} ) {
+  
   const [timeNow, setTimeNow] = useState(null);
   const [temperature, setTemperature] = useState(null);
   const [dataForecast, setDataForecast] = useState(null);
+  const [weather, setWeather] = useState(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -28,31 +27,26 @@ export function Sidebar( {currentInfo}, {dailyForecast} ) {
   }, []);
 
   useEffect(()=> {
-   
-    const setInformation = async()=> {
-      try{        
-        const tempInfo = await currentInfo.temperature
+    if(currentInfo){
+        const tempInfo = currentInfo.temperature
         setTemperature(Math.floor(tempInfo))
-        console.log('temperature: ', temperature)
-
-        const info = await dailyForecast
-        setDataForecast(info)
-        console.log('dataForecast: ', dataForecast)
-      }catch(e){
-        console.error('El error fue: ', e);
+        const dataWeather = dailyForecast[0].weather
+        setWeather(dataWeather) 
       }
-    }
 
-    setInformation();
-  },[currentInfo])
+      if(dailyForecast){
+        
+        setDataForecast(dailyForecast)
+      }
+  },[currentInfo, dailyForecast])
 
   return (
     <div className="grid grid-cols-1 gap-2 my-5">
       <span className="text-4xl font-bold text-align-end">{timeNow ? timeNow : "Updating..."}</span >
-      <span className="text-6xl my-4">{temperature ? temperature : "Updating..."}° C</span>
+      <span className="text-6xl my-4">{temperature !== null ? `${temperature}°C ${weather}` : "Updating..."}</span>
       <hr className="h-px my-8"/>
-      <label>{JSON.stringify(dataForecast)}</label>
-      <Forecast dailyForecast={dataForecast}/>
+      {dataForecast !== null && <Forecast dailyForecast={dataForecast}/>}
+
     </div>
   )
 }
