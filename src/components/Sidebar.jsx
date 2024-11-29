@@ -31,20 +31,30 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
         const tempInfo = currentInfo.temperature
         setTemperature(Math.floor(tempInfo))
         const dataWeather = dailyForecast[0].weather
-        setWeather(dataWeather) 
+        setWeather(capitalizeFirstLetter(dataWeather)) 
       }
 
-      if(dailyForecast){
-        
+      if(dailyForecast){        
         setDataForecast(dailyForecast)
       }
   },[currentInfo, dailyForecast])
 
+  function capitalizeFirstLetter(string) {
+    let myString = string.toLowerCase();
+    return myString.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
-    <div className="grid grid-cols-1 gap-2 my-5">
-      <span className="text-4xl font-bold text-align-end">{timeNow ? timeNow : "Updating..."}</span >
-      <span className="text-6xl my-4">{temperature !== null ? `${temperature}°C ${weather}` : "Updating..."}</span>
-      <hr className="h-px my-8"/>
+    <div className="grid grid-cols-1 gap-2 my-3">
+      <span className="text-3xl font-bold text-align-end">{timeNow ? timeNow : "Updating..."}</span >      
+      <span className="text-6xl my-2 flex">
+        {temperature !== null ? `${temperature}°C` : "..."}
+        {dailyForecast !== null && 
+          <img src={`./src/assets/images/${dailyForecast[0].icon}.png`} alt="icon" className="w-16 h-16 mx-6"/> 
+        }
+      </span>
+      <span className="text-6xl">{weather}</span>
+      <hr className="h-px my-6"/>
       {dataForecast !== null && <Forecast dailyForecast={dataForecast}/>}
 
     </div>

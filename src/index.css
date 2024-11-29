@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Regular";
+  src: local("Quicksand-Regular"), url('./assets/fonts/Quicksand-Regular.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Medium";
+  src: local("Quicksand-Medium"), url('./assets/fonts/Quicksand-Medium.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Light";
+  src: local("Quicksand-Light"), url('./assets/fonts/Quicksand-Light.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Bold";
+  src: local("Quicksand-Bold"), url('./assets/fonts/Quicksand-Bold.ttf') format("truetype");
+}
+
