@@ -49,7 +49,7 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
       <span className="text-6xl my-2 flex">
         {temperature !== null ? `${temperature}°C` : "..."}
         {dailyForecast !== null && 
-          <img src={`./src/assets/images/${dailyForecast[0].icon}.png`} alt="icon" className="w-16 h-16 mx-6"/> 
+          <img src={`src/assets/images/${dailyForecast[0].icon}.png`} alt="icon" className="w-16 h-16 mx-6"/> 
         }
       </span>
       <span className="text-6xl">{weather}</span>

@@ -18,7 +18,7 @@ function App() {
         setDailyData(data.daily.data[0])
         setCurrentInfo(data.current)
         setDailyForecast(data.daily.data)
-        console.log('data: ', data)
+        //console.log('data: ', data)
       } catch (e) {
         console.error(e)
       }
@@ -27,7 +27,7 @@ function App() {
     weahterApiCall()
     //Queda pendiente esta parte para proximas versiones ya que no tenenos error
     //no se muestra imagen del mapa
-    const fetchMapTile = async () => {
+/*     const fetchMapTile = async () => {
       const url = 'https://tile.openweathermap.org/map/clouds_new/10/299/467.png?appid=9a85654bf4e72c25aeed56a99cd7845b';
     
       try {
@@ -53,9 +53,9 @@ function App() {
       } catch (error) {
         console.error('Error fetching map tile:', error);
       }
-    };
+    }; */
     
-    fetchMapTile();
+    //fetchMapTile();
 
   }, [])
 
