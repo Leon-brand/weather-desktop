@@ -25,7 +25,8 @@ function App() {
     }
 
     weahterApiCall()
-
+    //Queda pendiente esta parte para proximas versiones ya que no tenenos error
+    //no se muestra imagen del mapa
     const fetchMapTile = async () => {
       const url = 'https://tile.openweathermap.org/map/clouds_new/10/299/467.png?appid=9a85654bf4e72c25aeed56a99cd7845b';
     
@@ -56,16 +57,14 @@ function App() {
     
     fetchMapTile();
 
-
-
   }, [])
 
   return (
     <>
       <section className='flex h-screen font-primaryMedium'>        
-        <div className="flex-1 bg-zinc-50 p-8">
+        <div className="flex-1 p-8 bg-[url(./assets/images/cdmx-evening.webp)] h-screen bg-cover">
           <Overview dailyData={dailyData}/>
-          <img id="mapTile" alt="Weather Map Tile" width="500" height="250"/>
+          {/* <img id="mapTile" alt="Weather Map Tile" width="500" height="250"/> */}
         </div>   
         <div className="w-1/3 bg-gradient-to-b from-sky-800 to-blue-900 text-white p-6">
           <Sidebar currentInfo={currentInfo} dailyForecast={dailyForecast}/>

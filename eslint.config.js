@@ -33,6 +33,13 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "no-unused-vars": "warn",
+      "no-undef": "error",
+      "indent":[ "warn",  2],
+      "comma-spacing": "warn",
+      "no-multiple-empty-lines": ["warn", { max: 2 }],
     },
   },
 ]

@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import Forecast from './Forecast';
@@ -28,16 +27,16 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
 
   useEffect(()=> {
     if(currentInfo){
-        const tempInfo = currentInfo.temperature
-        setTemperature(Math.floor(tempInfo))
-        const dataWeather = dailyForecast[0].weather
-        setWeather(capitalizeFirstLetter(dataWeather)) 
-      }
+      const tempInfo = currentInfo.temperature
+      setTemperature(Math.floor(tempInfo))
+      const dataWeather = dailyForecast[0].weather
+      setWeather(capitalizeFirstLetter(dataWeather)) 
+    }
 
-      if(dailyForecast){        
-        setDataForecast(dailyForecast)
-      }
-  },[currentInfo, dailyForecast])
+    if(dailyForecast){        
+      setDataForecast(dailyForecast)
+    }
+  }, [currentInfo, dailyForecast])
 
   function capitalizeFirstLetter(string) {
     let myString = string.toLowerCase();
