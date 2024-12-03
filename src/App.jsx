@@ -62,7 +62,7 @@ function App() {
   return (
     <>
       <section className='flex h-screen font-primaryMedium'>        
-        <div className="flex-1 p-8 bg-[url(./assets/images/cdmx-evening.webp)] h-screen bg-cover">
+        <div className="flex-1 p-8 bg-[url(./assets/bgImages/cdmx-evening.webp)] h-screen bg-cover">
           <Overview dailyData={dailyData}/>
           {/* <img id="mapTile" alt="Weather Map Tile" width="500" height="250"/> */}
         </div>   
