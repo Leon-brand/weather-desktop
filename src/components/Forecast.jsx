@@ -11,7 +11,7 @@ function Forecast({ dailyForecast }) {
       {dailyForecast.slice(0, 5).map((forecast, index) => (
         <div key={index} className="text-xl my-4"> 
           <p className="flex justify-start">
-            <img src={`./src/assets/images/${forecast.icon}.png`} alt="icon" className="w-6 h-6 mr-2"/>
+            <img src={`src/assets/images/${forecast.icon}.png`} alt="icon" className="w-6 h-6 mr-2"/>
             {`${forecast.day}`}            
           </p>          
           <p>{forecast.summary}</p>
