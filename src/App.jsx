@@ -76,13 +76,16 @@ function App() {
 
   }, [])
 
+  const basePath = "/weather-desktop";
+
   return (
     <>
       <section className='flex h-screen font-primaryMedium'>
         <div
-          className={bgImage
-            ? `flex-1 p-8 bg-[url(./assets/bgImages/${bgImage}.jpg)] h-screen bg-cover`
-            : `flex-1 p-8 bg-[url(./assets/bgImages/default.jpg)] h-screen bg-cover`}>
+          className={"flex-1 p-8 h-screen bg-cover"}
+          style={{
+            backgroundImage: `url(${basePath}/assets/bgImages/${bgImage || "default"}.jpg)`
+          }}>
           <Overview dailyData={dailyData}/>
           {/* <img id="mapTile" alt="Weather Map Tile" width="500" height="250"/> */}
         </div>

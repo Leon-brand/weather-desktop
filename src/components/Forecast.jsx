@@ -4,14 +4,20 @@ function Forecast({ dailyForecast }) {
   if (!dailyForecast) {
     return <p>Updating...</p>;
   }
-  //console.log('dailyForecast: ', dailyForecast)
+
+  const basePath = "/weather-desktop";
+
   return (
     <div>
       <label className="text-3xl">Forecast <span className="text-xl">(5-days)</span></label>
       {dailyForecast.slice(0, 5).map((forecast, index) => (
         <div key={index} className="text-xl my-4">
           <p className="flex justify-start">
-            <img src={`images/${forecast.icon}.png`} alt="icon" className="w-6 h-6 mr-2"/>
+            <img
+              src={`${basePath}/assets/images/${forecast.icon || "3"}.png`}
+              alt="icon"
+              className="w-6 h-6 mr-2"
+            />
             {`${forecast.day}`}
           </p>
           <p>{forecast.summary}</p>

@@ -4,9 +4,10 @@ import Forecast from './Forecast';
 
 export function Sidebar( {currentInfo, dailyForecast} ) {
   
-  const [timeNow, setTimeNow] = useState(null);
-  const [temperature, setTemperature] = useState(null);
-  const [weather, setWeather] = useState(null);
+  const [timeNow, setTimeNow] = useState(null),
+        [temperature, setTemperature] = useState(null),
+        [weather, setWeather] = useState(null),
+        [weatherIcon, setWeatherIcon] = useState(null);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -25,23 +26,28 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
   }, []);
 
   useEffect(()=> {
-    if(currentInfo){
+    if(currentInfo && dailyForecast){
       const tempInfo = currentInfo.temperature
-      setTemperature(Math.round(tempInfo))
       const dataWeather = currentInfo.summary
+      const dataIcon = dailyForecast[0].icon
+      setTemperature(Math.round(tempInfo))
       setWeather(dataWeather)
+      setWeatherIcon(dataIcon)
     }
-
   }, [currentInfo, dailyForecast])
+
+  const basePath = "/weather-desktop";
 
   return (
     <div className="grid grid-cols-1 gap-2 my-3">
       <span className="text-3xl font-bold text-align-end">{timeNow ? timeNow : "Updating..."}</span >      
       <span className="text-6xl my-2 flex">
-        {temperature !== null ? `${temperature}°C` : "..."}
-        {dailyForecast !== null && 
-          <img src={`src/assets/images/${dailyForecast[0].icon}.png`} alt="icon" className="w-16 h-16 mx-6"/> 
-        }
+        {temperature !== null ? `${temperature}°C` : "..."}      
+          <img 
+            src={`${basePath}/assets/images/${weatherIcon || "3"}.png`}        
+            alt="weather-icon" 
+            className="w-16 h-16 mx-6"
+          />        
       </span>
       <span className="text-6xl">{weather}</span>
       <hr className="h-px my-6"/>
