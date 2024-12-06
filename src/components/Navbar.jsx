@@ -23,7 +23,7 @@ export function Navbar() {
       <div className='flex justify-between text-3xl font-bold text-white'>
         <label className='font-bold text-white'>{dayName}</label>
         <label>Mexico City</label>
-      </div><br></br>
+      </div>
       <label className='text-2xl text-white'>{date}</label>
       <hr className="h-px my-8 dark:bg-gray-100"/>
     </div>

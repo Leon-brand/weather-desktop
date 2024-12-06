@@ -19,7 +19,7 @@ function App() {
         setDailyData(data.daily.data[0])
         setCurrentInfo(data.current)
         setDailyForecast(data.daily.data)
-        console.log('data: ', data)
+        //console.log('data: ', data)
       } catch (e) {
         console.error(e)
       }
@@ -83,9 +83,7 @@ function App() {
       <section className='flex h-screen font-primaryMedium'>
         <div
           className={"flex-1 p-8 h-screen bg-cover"}
-          style={{
-            backgroundImage: `url(${basePath}/assets/bgImages/${bgImage || "default"}.jpg)`
-          }}>
+          style={{ backgroundImage: `url(${basePath}/assets/bgImages/${bgImage || "default"}.jpg)` }}>
           <Overview dailyData={dailyData}/>
           {/* <img id="mapTile" alt="Weather Map Tile" width="500" height="250"/> */}
         </div>
