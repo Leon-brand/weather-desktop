@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -10,10 +10,10 @@ export default {
         primaryRegular: ["Regular"],
         primaryMedium: ["Medium"],
         primaryLight: ["Light"],
-        primaryBold: ["Bold"],
-      },
-    },
+        primaryBold: ["Bold"]
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }
 

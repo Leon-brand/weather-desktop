@@ -6,7 +6,6 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
   
   const [timeNow, setTimeNow] = useState(null);
   const [temperature, setTemperature] = useState(null);
-  const [dataForecast, setDataForecast] = useState(null);
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -28,20 +27,12 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
   useEffect(()=> {
     if(currentInfo){
       const tempInfo = currentInfo.temperature
-      setTemperature(Math.floor(tempInfo))
-      const dataWeather = dailyForecast[0].weather
-      setWeather(capitalizeFirstLetter(dataWeather)) 
+      setTemperature(Math.round(tempInfo))
+      const dataWeather = currentInfo.summary
+      setWeather(dataWeather)
     }
 
-    if(dailyForecast){        
-      setDataForecast(dailyForecast)
-    }
   }, [currentInfo, dailyForecast])
-
-  function capitalizeFirstLetter(string) {
-    let myString = string.toLowerCase();
-    return myString.charAt(0).toUpperCase() + string.slice(1);
-  }
 
   return (
     <div className="grid grid-cols-1 gap-2 my-3">
@@ -54,7 +45,7 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
       </span>
       <span className="text-6xl">{weather}</span>
       <hr className="h-px my-6"/>
-      {dataForecast !== null && <Forecast dailyForecast={dataForecast}/>}
+      {dailyForecast !== null && <Forecast dailyForecast={dailyForecast}/>}
 
     </div>
   )

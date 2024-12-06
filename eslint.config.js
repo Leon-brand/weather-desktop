@@ -14,14 +14,14 @@ export default [
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
-        sourceType: 'module',
-      },
+        sourceType: 'module'
+      }
     },
     settings: { react: { version: '18.3' } },
     plugins: {
       react,
       'react-hooks': reactHooks,
-      'react-refresh': reactRefresh,
+      'react-refresh': reactRefresh
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -31,7 +31,7 @@ export default [
       'react/jsx-no-target-blank': 'off',
       'react-refresh/only-export-components': [
         'warn',
-        { allowConstantExport: true },
+        { allowConstantExport: true }
       ],
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
@@ -39,7 +39,13 @@ export default [
       "no-undef": "error",
       "indent":[ "warn",  2],
       "comma-spacing": "warn",
-      "no-multiple-empty-lines": ["warn", { max: 2 }],
-    },
-  },
+      "no-multiple-empty-lines": ["warn", { max: 1 }],
+      "no-trailing-spaces": "warn",
+      "operator-linebreak": "warn",
+      "block-spacing": "warn",
+      "camelcase": "warn",
+      "comma-dangle": "warn",
+      "func-call-spacing": "warn"
+    }
+  }
 ]

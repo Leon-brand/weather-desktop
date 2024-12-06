@@ -1,23 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect } from 'react'; 
+import { useState, useEffect } from 'react';
 
 export function Navbar() {
 
-  const [date, setDate] = useState('');
-  const [dayName, setDayName] = useState('');
-  const weekDays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const [date, setDate] = useState(''),
+    [dayName, setDayName] = useState(''),
+    weekDays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
   useEffect(() => {
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-
-    const infoDay = weekDays.filter((day) => date.getDay() === weekDays.indexOf(day))[0];    
+    const date = new Date(),
+      day = date.getDate(),
+      month = date.getMonth() + 1,
+      year = date.getFullYear(),
+      infoDay = weekDays.filter((day) => date.getDay() === weekDays.indexOf(day))[0];
 
     setDate(`${day}/${month}/${year}`);
     setDayName(infoDay);
-  }, []); 
+  }, []);
 
   return (
     <div>
