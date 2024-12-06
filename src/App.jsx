@@ -64,8 +64,8 @@ function App() {
 
     const updateBgImage = ()=> {
       const hour = new Date();
-      const timeNow = parseInt(hour.toLocaleTimeString("es-ES", { hour: "2-digit", hour12: false }));
-
+      const timeNow = parseInt(parseInt(hour.toLocaleTimeString("es-ES", { hour: "2-digit", hour12: false })));
+      //Se pueden mejorar los if's con un switch case o un ternario especial
       if(timeNow >= 6 && timeNow < 10 || timeNow >= 18 && timeNow < 20) setBgImage('albaOcaso')
       if(timeNow >= 10 && timeNow < 18) setBgImage('medioDia')
       if(timeNow >= 20 || timeNow <=5) setBgImage('noche')
