@@ -37,7 +37,7 @@ export default [
       "react/react-in-jsx-scope": "off",
       "no-unused-vars": "warn",
       "no-undef": "error",
-      "indent":[ "warn",  2],
+      "indent":[ "warn", 2],
       "comma-spacing": "warn",
       "no-multiple-empty-lines": ["warn", { max: 1 }],
       "no-trailing-spaces": "warn",
@@ -45,7 +45,13 @@ export default [
       "block-spacing": "warn",
       "camelcase": "warn",
       "comma-dangle": "warn",
-      "func-call-spacing": "warn"
+      "func-call-spacing": "warn",
+      "no-debugger": "warn",
+      "no-dupe-args": "warn",
+      "no-duplicate-case": "warn",
+      "no-duplicate-imports": "warn",
+      "no-lone-blocks": "warn",
+      "no-multi-spaces": "warn"
     }
   }
 ]
