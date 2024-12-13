@@ -10,7 +10,8 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
     [weatherIcon, setWeatherIcon] = useState(null);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
+
+    const getTimeNow =()=> {
       const data = new Date();
       setTimeNow(
         data.toLocaleTimeString("es-ES", {
@@ -19,10 +20,13 @@ export function Sidebar( {currentInfo, dailyForecast} ) {
           hour12: true
         })
       );
-    }, 5000);
-    return () => {
-      clearInterval(intervalId);
-    };
+    }
+
+    const intervalId = setInterval(() => {
+      getTimeNow();
+    }, 10000);
+    return () => { clearInterval(intervalId) };
+
   }, []);
 
   useEffect(()=> {

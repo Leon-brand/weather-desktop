@@ -24,12 +24,7 @@ function App() {
       const leafletScript = document.createElement('script');
       leafletScript.src = 'https://unpkg.com/leaflet@1.4.0/dist/leaflet.js';
       leafletScript.async = true;
-
-      leafletScript.onload = () => {
-        console.log('✅ Leaflet cargado con éxito');
-        resolve();
-      };
-
+      leafletScript.onload = () => { resolve() };
       leafletScript.onerror = () => { reject(new Error('Error al cargar Leaflet')) };
 
       document.body.appendChild(leafletScript);
@@ -46,12 +41,7 @@ function App() {
       const script = document.createElement('script');
       script.src = 'https://api.windy.com/assets/libBoot.js';
       script.async = true;
-
-      script.onload = ()=> {
-        console.log('✅ Script de Windy cargado con éxito');
-        resolve();
-      };
-
+      script.onload = ()=> { resolve() };
       script.onerror = ()=> { reject(new Error('Error al cargar el script de Windy')) };
 
       document.body.appendChild(script);
@@ -77,11 +67,9 @@ function App() {
     const updateBgImage = ()=> {
       const hour = new Date();
       const timeNow = parseInt(parseInt(hour.toLocaleTimeString("es-ES", { hour: "2-digit", hour12: false })));
-      //Se pueden mejorar los if's con un switch case o un ternario especial
-      if(timeNow >= 6 && timeNow < 10 || timeNow >= 17 && timeNow < 19) setBgImage('albaOcaso')
+      if(timeNow >= 6 && timeNow < 10 || timeNow >= 17 && timeNow <= 19) setBgImage('albaOcaso')
       if(timeNow >= 10 && timeNow < 17) setBgImage('medioDia')
       if(timeNow >= 20 || timeNow <=5) setBgImage('noche')
-
     }
 
     const weahterApiCall = async () => {
@@ -91,10 +79,7 @@ function App() {
         setDailyData(data.daily.data[0])
         setCurrentInfo(data.current)
         setDailyForecast(data.daily.data)
-        //console.log('data: ', data)
-      } catch (e) {
-        console.error(e)
-      }
+      } catch (e) { console.error(e) }
     }
 
     const loadAndInitializeWindy = async () => {
@@ -113,20 +98,27 @@ function App() {
     weahterApiCall();
     loadAndInitializeWindy();
 
+    const minute = 60000;
+    const intervalId = setInterval(()=> {
+      updateBgImage();
+      weahterApiCall();
+    }, minute*30);//Actualiza info e imagen cada 30 minutos
+    return ()=> { clearInterval(intervalId) };
+
   }, [])
 
   return (
     <>
-      <section className='flex h-screen font-primaryMedium'>
+      <section className='flex min-h-screen font-primaryMedium'>
         <div
-          className={"flex-1 p-8 h-screen bg-cover"}
+          className={"flex-1 p-8 bg-cover"}
           style={{ backgroundImage: `url(${basePath}/assets/bgImages/${bgImage || "default"}.jpg)` }}>
           <Overview dailyData={dailyData}/>
           <div
             className="mt-12 rounded-xl"
             id="windy"
             ref={mapRef}
-            style={{ height: '500px', width: '100%' }}
+            style={{ height: '40%', width: '100%' }}
           ></div>
         </div>
         <div className="w-1/3 bg-gradient-to-b from-sky-800 to-blue-900 text-white p-6">
